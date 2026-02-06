@@ -11,24 +11,26 @@
 body {
     margin:0;
     font-family:'Pacifico', cursive;
+    padding: 0;
     overflow-x:hidden;
     background:#000;
     color:#fff;
     position:relative;
 }
 
-/* Background - Night-time study theme */
+/* Background - Lofi Girl Studying with Cat */
 .background{
     position:fixed; 
     inset:0; 
     z-index:0; 
     overflow:hidden;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1516533075015-a3838414c3ca?q=80&w=2070&auto=format&fit=crop') center center/cover no-repeat;
+    /* This link is a cozy Lofi study scene */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=2070&auto=format&fit=crop') center center/cover no-repeat;
 }
 
 /* Intro Overlay */
-.intro{position:fixed; inset:0; background:rgba(0,0,30,0.9); display:flex; justify-content:center; align-items:center; z-index:20; animation:introFade 7s forwards;}
+.intro{position:fixed; inset:0; background:rgba(10,10,30,0.95); display:flex; justify-content:center; align-items:center; z-index:20; animation:introFade 7s forwards;}
 .intro-text{text-align:center;color:#fff;}
 .heart{font-size:60px; animation:heartbeat 1.5s infinite; margin-bottom:15px;}
 @keyframes heartbeat{0%{transform:scale(1);}25%{transform:scale(1.1);}40%{transform:scale(1);}60%{transform:scale(1.15);}100%{transform:scale(1);}}
@@ -51,14 +53,14 @@ body {
 
 /* Card Styling */
 .container{position:relative;z-index:2;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;}
-.card{background:rgba(0,0,30,0.85);padding:28px;max-width:720px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.7);border: 1px solid rgba(43, 127, 255, 0.3);}
-h1{text-align:center;color:#2b7fff;font-size:26px;}
+.card{background:rgba(0,0,0,0.7); padding:28px; max-width:720px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.8); border: 1px solid rgba(43, 127, 255, 0.2); backdrop-filter: blur(5px);}
+h1{text-align:center;color:#2b7fff;font-size:26px; margin-top: 0;}
 p{font-size:16px;line-height:1.65;margin-bottom:14px;color:#fff;}
-button{background:#2b7fff;color:white;border:none;padding:12px 20px;border-radius:25px;font-size:14px;cursor:pointer; transition: 0.3s;}
+button{background:#2b7fff;color:white;border:none;padding:12px 20px;border-radius:25px;font-size:14px;cursor:pointer; transition: 0.3s; font-family: 'Pacifico', cursive;}
 button:hover{background:#1a5fcc; transform: translateY(-2px);}
 .signature{text-align:right;margin-top:20px;font-weight:bold;color:#2b7fff;}
 
-@media (max-width:600px){p{font-size:14px;} h1{font-size:24px;}}
+@media (max-width:600px){p{font-size:14px;} h1{font-size:22px;}}
 </style>
 </head>
 <body>
@@ -97,13 +99,13 @@ button:hover{background:#1a5fcc; transform: translateY(-2px);}
 <script>
 // Generate Rain and Stars
 const background=document.getElementById('background');
-for(let i=0;i<100;i++){
+for(let i=0;i<80;i++){
     let drop=document.createElement('div'); drop.className='rain';
     drop.style.left=Math.random()*100+'vw';
     drop.style.animationDuration=(0.5+Math.random()*1.5)+'s';
     background.appendChild(drop);
 }
-for(let i=0;i<50;i++){
+for(let i=0;i<40;i++){
     let star=document.createElement('div'); star.className='star';
     star.style.left=Math.random()*100+'vw';
     star.style.top=Math.random()*80+'vh';
@@ -124,7 +126,7 @@ const paragraphs = [
 
 // Start typing after intro fades (7 seconds)
 async function typeText(){
-  await new Promise(r => setTimeout(r, 7000)); 
+  await new Promise(r => setTimeout(r, 7500)); 
 
   for(const para of paragraphs){
     for(const char of para){
@@ -147,7 +149,7 @@ function reveal(){
 // MedTech Icons sequence
 function showMedTechIcons() {
     const icons = ['🧪', '🔬', '🧬', '🩺', '✨'];
-    for(let i=0; i<15; i++) {
+    for(let i=0; i<12; i++) {
         setTimeout(() => {
             let icon = document.createElement('div');
             icon.className = 'mt-icon';
@@ -158,17 +160,17 @@ function showMedTechIcons() {
             
             icon.animate([
                 { opacity: 0, transform: 'scale(0.5) translateY(0)' },
-                { opacity: 1, transform: 'scale(1.2) translateY(-20px)' },
+                { opacity: 0.8, transform: 'scale(1.2) translateY(-20px)' },
                 { opacity: 0, transform: 'scale(1) translateY(-40px)' }
             ], { duration: 3000, fill: 'forwards' });
             
             setTimeout(() => icon.remove(), 3000);
-        }, i * 400);
+        }, i * 500);
     }
 }
 
 function createConfetti(){
-    for(let i=0;i<50;i++){
+    for(let i=0;i<40;i++){
         let c=document.createElement('div');
         c.style.width='8px'; c.style.height='8px';
         c.style.background=`hsl(${Math.random()*360}, 70%, 60%)`;
